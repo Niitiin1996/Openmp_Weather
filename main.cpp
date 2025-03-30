@@ -60,9 +60,9 @@ void fetchWeatherForStations(const vector<string>& stations, const string& fetch
         }
 
         double tavgMean = 0, tminMean = 0, presMean = 0;
-        if (!tavgValues.empty()) tavgMean = accumulate(tavgValues.begin(), tavgValues.end(), 0.0) / tavgValues.size();
-        if (!tminValues.empty()) tminMean = accumulate(tminValues.begin(), tminValues.end(), 0.0) / tminValues.size();
-        if (!presValues.empty()) presMean = accumulate(presValues.begin(), presValues.end(), 0.0) / presValues.size();
+        tavgMean = accumulate(tavgValues.begin(), tavgValues.end(), 0.0) / tavgValues.size();
+        tminMean = accumulate(tminValues.begin(), tminValues.end(), 0.0) / tminValues.size();
+        presMean = accumulate(presValues.begin(), presValues.end(), 0.0) / presValues.size();
 
         {
             std::lock_guard<std::mutex> guard(coutMutex);
