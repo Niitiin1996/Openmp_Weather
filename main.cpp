@@ -9,6 +9,7 @@
 
 using namespace std;
 std::mutex coutMutex;
+
 vector<string> Station(const string& jsonResponse) {
     vector<string> stations;
     Json::CharReaderBuilder reader;
@@ -21,7 +22,6 @@ vector<string> Station(const string& jsonResponse) {
         return stations;
     }
 
-    // Check if "meta" -> "stations" exists and is an array
     if (root.isMember("meta") && root["meta"].isMember("stations") && root["meta"]["stations"].isArray()) {
         for (const auto& station : root["meta"]["stations"]) {
             stations.push_back(station.asString());
